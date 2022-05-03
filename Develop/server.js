@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const noteData = require('./db/db.json');
-
+const fs = require('fs');
 const PORT = 3001;
 
 const app = express();
@@ -18,11 +18,11 @@ app.get('/api/notes', (req, res) => res.json(noteData));
 app.post('/api/notes', (req, res) => {
   console.info(`${req.method} request received to add a note`);
 
-  const { title, description } = req.body;
-  if (title && description) {
+  const { title, text } = req.body;
+  if (title && text) {
     const newNote = {
       title,
-      description,
+      text,
     };
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
