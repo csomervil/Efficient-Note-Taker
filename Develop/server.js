@@ -5,11 +5,11 @@ const fs = require('fs');
 const { channel } = require('diagnostics_channel');
 const PORT = 3001;
 let channels = [];
-
-randomNumber = () =>
-  Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
+const randInt = require('./public/random');
+// randomNumber = () =>
+//   Math.floor((1 + Math.random()) * 0x10000)
+//     .toString(16)
+//     .substring(1);
 
 
 const app = express();
@@ -32,7 +32,7 @@ app.get('/api/notes', (req, res) => {
   console.log(channels)
   console.log(noteData)
 
-  console.info(`${req.method} request received to get reviews`);
+  console.info(`${req.method} request received to get notes`);
   if (channels.length < 1) {
     return res.send(noteData);
   }
@@ -47,11 +47,11 @@ app.post('/api/notes', (req, res) => {
     channels = noteData;
   }
   const { title, text, id } = req.body;
-  if (title && text && id) {
+  if (title && text) {
     const newNote = {
       title,
       text,
-      id: randomNumber(),
+      id: randInt(),
     };
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
@@ -88,6 +88,7 @@ app.post('/api/notes', (req, res) => {
 //   const deleted = channels.find(channel => channel.id === id);
 //   if (deleted) {
 //     channels = channels.filter(channel => channel.id != id);
+//     console.log("worked")
 //     res.json(deleted);
 //   } else {
 //     res.json( { message: "No" })
