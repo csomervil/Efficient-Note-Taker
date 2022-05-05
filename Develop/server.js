@@ -3,7 +3,7 @@ const path = require('path');
 const noteData = require('./db/db.json');
 const fs = require('fs');
 const { channel } = require('diagnostics_channel');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 let channels = [];
 const randInt = require('./public/random');
 // randomNumber = () =>
