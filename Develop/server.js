@@ -83,18 +83,19 @@ app.post('/api/notes', (req, res) => {
 //   console.log(noteData);
 // });
 
-// app.delete('/api/notes/:id', (req, res) => {
-//   const { id } = req.params;
-//   const deleted = channels.find(channel => channel.id === id);
-//   if (deleted) {
-//     channels = channels.filter(channel => channel.id != id);
-//     console.log("worked")
-//     res.json(deleted);
-//   } else {
-//     res.json( { message: "No" })
-//   }
+app.delete('/api/notes/:id', (req, res) => {
 
-// });
+  const { id } = req.params;
+  const deleted = channels.find(channel => channel.id === id);
+  if (deleted) {
+    channels = channels.filter(channel => channel.id != id);
+    console.log("work")
+    res.json(deleted);
+  } else {
+    res.json( { message: "No" })
+  }
+
+});
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
