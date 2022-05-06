@@ -2,13 +2,16 @@
 
 # Introduction
 
-The Efficient Note Taker is an application made in Node.js and Express.js. It allows the user to start a locally created server and navigate a webpage accordingly (url: http://localhost:3001). The user can add notes and look at the notes created.
+The Efficient Note Taker is an application made in Node.js and Express.js. It allows the user to start a locally created server and navigate to a webpage with server generated values. The user can add notes and look at the notes created.
 
 # Installation
 
 Using a zip or cloning.
 
 # Preview
+
+Link to view application:
+https://enigmatic-meadow-20740.herokuapp.com/
 
 Screenshots of the webpage after running server:
 
